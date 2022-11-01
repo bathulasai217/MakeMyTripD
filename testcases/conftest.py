@@ -10,7 +10,7 @@ def setup(request):
     ser_obj = Service(EdgeChromiumDriverManager().install())
     driver = webdriver.Edge(service=ser_obj)
     #wait = WebDriverWait(driver, 10)
-    driver.get("https://www.makemytrip.com/flights/")
+    driver.get("https://www.makemytrip.com")
     driver.maximize_window()
     request.cls.driver = driver
     #request.cls.wait = wait

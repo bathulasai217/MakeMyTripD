@@ -12,6 +12,7 @@ class TestSearchFlights:
         up.titleVerificaation()
     def test_searchflights(self):
         lp = LaunchPage(self.driver)
+        lp.framehandling()
         lp.searchFlights("ahamedabad","New delhi")
         lp.selectdate()
         lp.selectstudentfare()

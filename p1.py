@@ -1,23 +1,17 @@
-import json
-flight_names = ['a','b','c','d']
-deps = ['1','2','3','4']
-durations = ['10','20','30','40']
-studentticketfare = [1,2,3]
-count =0
-result = {}
-result = {
-    "rows": []
-          }
-for i,j,k in zip(flight_names,deps,durations):
-    row = {}
-    row = {
-        'Flight': i,
-        'Duration': j,
-        'Departure_time': k
-}
-    count+=1
-    if count >len(studentticketfare):
-        break
-    else:
-        result['rows'].append(row)
-print(json.dumps(result))
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+serv_obj = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=serv_obj)
+driver.get("https://www.makemytrip.com/")
+driver.maximize_window()
+# driver.switch_to.frame("notification-frame-~55852cba")
+# print(driver.title)
+#
+# driver.find_element(By.ID,"webklipper-publisher-widget-container-notification-close-div").click()
+time.sleep(3)
+driver.find_element(By.CSS_SELECTOR,"span.langCardClose").click()
+time.sleep(4)

@@ -20,11 +20,19 @@ class LaunchPage(BaseDriver):
     text_next_mon_XPATH = "//span[@aria-label='Next Month']"
     text_studentfare_CSS = "ul.specialFareNew>li:nth-child(3)"
     text_searcgbutton_XPATH = "//a[@class='primaryBtn font24 latoBold widgetSearchBtn ']"
+    text_framepopup_close_NAME = "webklipper-publisher-widget-container-notification-close-div"
 
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
         # self.wait =wait
+    def framehandling(self):
+        try:
+            self.switchToFrame("notification-frame-~55852cba")
+            time.sleep(2)
+            self.findelement(By.ID,self.text_framepopup_close_NAME).click()
+        except:
+            print("no such frame")
 
     def departfrom(self, departlocation):
         self.wait_for_element_to_be_clickable(By.CSS_SELECTOR, self.text_departfrom_CSS).click()

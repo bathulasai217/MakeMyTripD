@@ -20,5 +20,12 @@ class BaseDriver:
     def screenshot(self,location):
         screeshot = self.driver.save_screenshot(location)
         return screeshot
+    def switchToFrame(self,locator):
+        iframe = self.driver.switch_to.frame(locator)
+        return iframe
+    def findelement(self,locater_type,locator):
+        f = self.driver.find_element(locater_type,locator)
+        return f
+
 
 

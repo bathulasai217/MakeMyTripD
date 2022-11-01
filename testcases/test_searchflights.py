@@ -14,6 +14,8 @@ class TestSearchFlights:
         lp = LaunchPage(self.driver)
         lp.framehandling()
         lp.searchFlights("ahamedabad","New delhi")
+        lp.linkhandling()
+        time.sleep(2)
         lp.selectdate()
         lp.selectstudentfare()
         lp.clickonsearch()

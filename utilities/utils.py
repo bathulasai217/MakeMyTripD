@@ -13,12 +13,12 @@ class Utils(BaseDriver):
         result = {
             "rows": []
         }
-        for i, j, k in zip(flightname, flightduration, flightdepaturetime):
+        for i, j, k in zip(flightname, flightdepaturetime, flightduration):
             row = {}
             row = {
                 'Flight': i.text,
-                'Departure_time': j.text,
-                'Duration': k.text
+                'Duration': j.text,
+                'Departure_time': k.text
             }
             count += 1
             if count > len(studentfareflights):
@@ -26,6 +26,7 @@ class Utils(BaseDriver):
             else:
                 result['rows'].append(row)
         print(json.dumps(result))
+
     def titleVerificaation(self):
         act_title = self.pagetitle()
         if act_title == "MakeMyTrip - #1 Travel Website 50% OFF on Hotels, Flights & Holiday":

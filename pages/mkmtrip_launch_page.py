@@ -13,14 +13,15 @@ class LaunchPage(BaseDriver):
     text_gointto_select_CSS = "li#react-autowhatever-1-section-0-item-0"
 
     text_select_date_CSS = "div.DayPicker-Caption>div"
-    text_date_month = "November 2022"
-    text_date = 'Thu Nov 24 2022'
-    text_date_mon_year  = "//div[contains(@aria-label,{0})]"
+    text_date_month = "December 2022"
+    text_date = 'Mon Dec 19 2022'
+    text_date_mon_year  = "//div[contains(@aria-label,'Mon Dec 19 2022')]"
     text_date_mon_year_XPATH = text_date_mon_year.format(text_date)
     text_next_mon_XPATH = "//span[@aria-label='Next Month']"
     text_studentfare_CSS = "ul.specialFareNew>li:nth-child(3)"
     text_searcgbutton_XPATH = "//a[@class='primaryBtn font24 latoBold widgetSearchBtn ']"
     text_framepopup_close_NAME = "webklipper-publisher-widget-container-notification-close-div"
+    text_small_popup_XPATH = "//div[@class = 'langCard  fixedCard bounceAni']/span"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -59,7 +60,7 @@ class LaunchPage(BaseDriver):
                 if month_year.text == self.text_date_month:
                     time.sleep(1)
                     # self.driver.find_element(By.XPATH, "//div[contains(@aria-label,'Thu Nov 24 2022')]").click()
-                    self.wait_for_element_to_be_clickable(By.XPATH, self.text_date_mon_year_XPATH).click()
+                    self.wait_for_element_to_be_clickable(By.XPATH, self.text_date_mon_year).click()
                 else:
                     # self.driver.find_element(By.XPATH, "//span[@aria-label='Next Month']").click()
                     self.wait_for_element_to_be_clickable(By.XPATH, self.text_next_mon_XPATH).click()
@@ -75,3 +76,9 @@ class LaunchPage(BaseDriver):
     def searchFlights(self,departlocation,goiningtolocation):
         self.departfrom(departlocation)
         self.goingto(goiningtolocation)
+    def linkhandling(self):
+        try:
+            s = self.findelement(By.XPATH,self.text_small_popup_XPATH).click()
+            return s
+        except:
+            print("no such link")
